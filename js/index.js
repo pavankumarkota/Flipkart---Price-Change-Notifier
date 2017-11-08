@@ -31,7 +31,7 @@ function getCurrentTabUrl(callback) {
     });
 
 }
-
+//Parse pid form url
 $.urlParam = function(name,url){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
     if (results==null){
@@ -41,7 +41,20 @@ $.urlParam = function(name,url){
         return results[1] || 0;
     }
 }
-
+//fetch current product price and details with product id as parameter
+function getProductDetails(parameters, callback) {
+    $.ajax({
+        type: 'get',
+        url: serverAddress + '/product',
+        data: parameters,
+        success: function(d) {
+            callback(d);
+        },
+        error: function() {
+            console.log("error");
+        }
+    });
+}
 document.addEventListener('DOMContentLoaded', function() {
 
     // When price condition is changed
