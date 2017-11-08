@@ -32,6 +32,16 @@ function getCurrentTabUrl(callback) {
 
 }
 
+$.urlParam = function(name,url){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+    if (results==null){
+        return null;
+    }
+    else{
+        return results[1] || 0;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     // When price condition is changed
